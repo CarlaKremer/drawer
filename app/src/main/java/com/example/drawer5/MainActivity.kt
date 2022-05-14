@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var toggle : ActionBarDrawerToggle
 
-    private lateinit var BlankFragment : BlankFragment
-    private lateinit var BlankFragment2 : BlankFragment2
+    private lateinit var blankFragment : BlankFragment
+    private lateinit var blankFragment2 : BlankFragment2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity(){
 
         val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
+        blankFragment = BlankFragment()
+        blankFragment2 = BlankFragment2()
+
+
 
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -35,8 +39,12 @@ class MainActivity : AppCompatActivity(){
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nav_location -> setFragment(BlankFragment)
-                R.id.nav_calendar -> setFragment(BlankFragment2)
+                R.id.nav_location -> {
+                    setFragment(blankFragment)
+                }
+                R.id.nav_calendar -> {
+                    setFragment(blankFragment2)
+                }
             }
             true
         }
